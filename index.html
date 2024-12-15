@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Proxy Loader</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        iframe { border: none; }
+    </style>
+</head>
+<body>
+    <h1>Enter a URL to Load</h1>
+    <form id="urlForm">
+        <label for="urlInput">URL:</label>
+        <input type="url" id="urlInput" placeholder="https://example.com" required>
+        <button type="submit">Load</button>
+    </form>
+    <div id="iframeContainer" style="margin-top: 20px;"></div>
+    <script src="script.js"></script>
+</body>
+</html>
