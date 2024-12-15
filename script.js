@@ -1,5 +1,5 @@
 const form = document.getElementById('urlForm');
-const proxyUrl = "https://proxy.example.workers.dev"; // Replace with your Cloudflare Worker URL
+const proxyUrl = "https://orange-snowflake-4351.nate-demento.workers.dev/"; // Replace with your Cloudflare Worker URL
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
