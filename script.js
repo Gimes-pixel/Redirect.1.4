@@ -1,6 +1,5 @@
 const form = document.getElementById('urlForm');
-const iframeContainer = document.getElementById('iframeContainer');
-const proxyUrl = "https://orange-snowflake-4351.nate-demento.workers.dev/"; // Replace with your Cloudflare Worker URL
+const proxyUrl = "https://proxy.example.workers.dev"; // Replace with your Cloudflare Worker URL
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -14,11 +13,31 @@ form.addEventListener('submit', (e) => {
         return;
     }
 
-    // Use the proxy to load the URL in an iframe
-    iframeContainer.innerHTML = ''; // Clear existing iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = `${proxyUrl}?url=${encodeURIComponent(targetUrl)}`;
-    iframe.style.width = '100%';
-    iframe.style.height = '500px';
-    iframeContainer.appendChild(iframe);
+    // Use the proxy to construct the iframe URL
+    const proxiedUrl = `${proxyUrl}?url=${encodeURIComponent(targetUrl)}`;
+
+    // Open a new tab and dynamically write the iframe into it
+    const newTab = window.open('about:blank', '_blank');
+    if (newTab) {
+        newTab.document.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Proxied Content</title>
+                <style>
+                    body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
+                    iframe { border: none; width: 100%; height: 100%; }
+                </style>
+            </head>
+            <body>
+                <iframe src="${proxiedUrl}"></iframe>
+            </body>
+            </html>
+        `);
+        newTab.document.close();
+    } else {
+        alert('Popup blocked! Please allow popups for this site.');
+    }
 });
