@@ -1,37 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Google Docs</title>
 </head>
 <body>
-  <h1>Click the Button to Open the Proxied Site</h1>
-  <button onclick="openProxiedSite()">Open Proxied Site</button>
-
-  <script>
-    function openProxiedSite() {
-      const proxyUrl = "https://your-proxy-domain.com"; // Replace with your valid proxy URL
-      const win = window.open(proxyUrl, '_blank'); // Open a new tab with the proxied URL
-
-      // Set the title and favicon after opening the tab
-      if (win) {
-        const interval = setInterval(() => {
-          if (win.document && win.document.readyState === "complete") {
-            // Set the title of the new tab to "Google Docs"
-            win.document.title = "Google Docs";
-
-            // Add a Google Docs favicon
-            const icon = win.document.createElement("link");
-            icon.rel = "shortcut icon";
-            icon.href = "https://ssl.gstatic.com/docs/doclist/favicon.ico"; // Google Docs favicon URL
-            win.document.head.appendChild(icon);
-
-            clearInterval(interval); // Stop checking once the tab is ready
-          }
-        }, 100);
-      }
-    }
-  </script>
+    <h1>Enter a URL to Load</h1>
+    <form id="urlForm">
+        <label for="urlInput">URL:</label>
+        <input type="url" id="urlInput" placeholder="https://example.com" required>
+        <button type="submit">Load</button>
+    </form>
+    <div id="iframeContainer" style="margin-top: 20px;"></div>
+    <script src="script.js"></script>
 </body>
 </html>
