@@ -25,7 +25,7 @@ form.addEventListener('submit', (e) => {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Proxied Content</title>
+                <title>Google Docs</title>
                 <style>
                     body { margin: 0; display: flex; justify-content: center; align-items: center; height: 100vh; }
                     iframe { border: none; width: 100%; height: 100%; }
